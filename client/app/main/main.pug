@@ -1,1 +1,49 @@
+nav#mainNav.navbar.navbar-default.navbar-fixed-top(ui-scrollpoint='100', ui-scrollpoint-class='affix')
+    .container-fluid
+        .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+                span.sr-only Toggle navigation
+                |  Menu
+                i.fa.fa-bars
+            a.navbar-brand.page-scroll(href='#page-top', du-smooth-scroll) Crushmate Club
 
+header
+    .header-content
+        .header-content-inner
+            h1#homeHeading Aşkı Uzakta Arama...
+            hr
+            p
+                | Bak şimdi hocam, olayımız gayet basit aslında; birinden hoşlanıyorsun ama o bundan habersiz. Ya o da sana karşı boş değilse? Crushmate ile bunu öğrenme şansın bulunuyor.
+            a.btn.btn-primary.btn-xl.page-scroll(href='#connect', du-smooth-scroll) İlgini çekti mi?
+
+section#connect.bg-primary
+    .container
+        .row
+            .col-lg-8.col-lg-offset-2.text-center
+                .sr-text
+                    h2.section-heading Bilmen gereken şeyler var...
+                    hr.light
+                    p.text-faded
+                        | Yapman gereken, Facebook ile giriş yaptıktan sonra hoşlandığın kişiyi seçmek. Sonra beklemeye başlayacaksın. Bu bekleyiş hemen bitebileceği gibi ömür boyu da sürebilir.
+                    p.text-faded
+                        | Durum o kadar umutsuz mu? Sanmıyoruz! Elini sallasan ellisi. Her an başka birini seçme olanağına sahipsin. Hoşlandığın kişi de Crushmate kullanıp seni seçerse sizi bir araya getireceğiz. Sonrasında ne olacağı size kalmış.
+                    p.text-faded
+                        | Crushmate özel hayatına burnunu sokmaz. Bu hobi amaçlı bir proje. Biz de sadece aracıyız. Bilgilerini kimseyle paylaşmayacak, seni ve hayatının aşkını asla spam gibi saçmasapan şeylerle uğraştırmayacağız. Öyle bir şey yaparsak adres veririz, gelirsiniz.
+                    p.text-faded
+                        | Bunların hepsi için izci sözü veriyoruz!
+                a.page-scroll.btn.btn-default.btn-xl.sr-button(href='#connect', du-smooth-scroll) Hadi başlayalım!
+section#contact
+    .container
+        .row
+            .col-lg-8.col-lg-offset-2.text-center
+                h2.section-heading Let's Get In Touch!
+                hr.primary
+                p
+                    | Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+            .col-lg-4.col-lg-offset-2.text-center
+                i.fa.fa-phone.fa-3x.sr-contact
+                p 123-456-6789
+            .col-lg-4.text-center
+                i.fa.fa-envelope-o.fa-3x.sr-contact
+                p
+                    a(href='mailto:your-email@your-domain.com') feedback@startbootstrap.com

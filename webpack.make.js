@@ -30,8 +30,12 @@ module.exports = function makeWebpackConfig(options) {
                 'angular',
                 'angular-aria',
                 'angular-cookies',
+                'angular-resource',
                 'angular-ui-router',
-                //'lodash'
+                'angular-ui-scrollpoint',
+                'angular-scroll',
+                'angular-scroll-animate',
+                'scrollreveal'
             ]
         };
     }
@@ -118,6 +122,9 @@ module.exports = function makeWebpackConfig(options) {
                 path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/*.scss'),
                 path.resolve(__dirname, 'client/app/app.scss')
             ]
+        }, {
+            test: /scrollreveal\.js$/,
+            loader: 'expose?ScrollReveal'
         }]
     };
 

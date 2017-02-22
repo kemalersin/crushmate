@@ -258,15 +258,9 @@ gulp.task('start:server:debug', () => {
 });
 
 gulp.task('watch', () => {
-    var testFiles = _.union(paths.client.test, paths.server.test.unit, paths.server.test.integration);
-
-    plugins.watch(_.union(paths.server.scripts, testFiles))
+    plugins.watch(paths.server.scripts)
         .pipe(plugins.plumber())
         .pipe(lintServerScripts());
-
-    plugins.watch(_.union(paths.server.test.unit, paths.server.test.integration))
-        .pipe(plugins.plumber())
-        .pipe(lintServerTestScripts());
 });
 
 gulp.task('serve', cb => {

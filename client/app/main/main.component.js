@@ -8,6 +8,27 @@ export class MainController {
     }
 
     $onInit() {
+        const sr = ScrollReveal();
+
+        sr.reveal('.sr-icons', {
+            duration: 600,
+            scale: 0.3,
+            distance: '0px'
+        }, 200);
+
+        sr.reveal('.sr-button', {
+            delay: 500,
+            duration: 1000
+        });
+
+        sr.reveal('.sr-text', {
+            delay: 200,
+            duration: 500,
+            distance: '90px',
+            easing: 'ease-in-out',
+            rotate: {z: 15},
+            scale: 1.3
+        });
     }
 }
 
