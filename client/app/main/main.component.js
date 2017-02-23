@@ -21,6 +21,12 @@ export class MainController {
             duration: 1000
         });
 
+        sr.reveal('.sr-contact', {
+            duration: 600,
+            scale: 0.3,
+            distance: '0px'
+        }, 300);
+
         sr.reveal('.sr-text', {
             delay: 200,
             duration: 500,

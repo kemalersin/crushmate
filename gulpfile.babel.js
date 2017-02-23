@@ -24,6 +24,7 @@ const serverPath = 'server';
 const paths = {
     client: {
         assets: `${clientPath}/assets/**/*`,
+        zoho: `${clientPath}/zohoverify/**/*`,
         images: `${clientPath}/assets/images/**/*`,
         revManifest: `${clientPath}/assets/rev-manifest.json`,
         scripts: [
@@ -319,6 +320,7 @@ gulp.task('build', cb => {
         [
             'copy:extras',
             'copy:assets',
+            'copy:zoho',
             'copy:fonts:dist',
             'copy:server',
             'webpack:dist'
@@ -391,6 +393,11 @@ gulp.task('copy:fonts:dist', () => {
 gulp.task('copy:assets', () => {
     return gulp.src([paths.client.assets, '!' + paths.client.images])
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets`));
+});
+
+gulp.task('copy:zoho', () => {
+    return gulp.src([paths.client.zoho])
+        .pipe(gulp.dest(`${paths.dist}/${clientPath}/zohoverify`));
 });
 
 gulp.task('copy:server', () => {
