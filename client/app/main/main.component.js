@@ -4,22 +4,24 @@ import routing from './main.routes';
 
 export class MainController {
     $window;
-    isLoggedIn: Function;
+    $document;
+    $timeout;
 
-    constructor(Auth, $window) {
+    user;
+    Auth;
+
+    constructor(Auth, $window, $document, $timeout) {
         'ngInject';
 
         this.$window = $window;
-        this.isLoggedIn = Auth.isLoggedInSync;
+        this.$document = $document;
+        this.$timeout = $timeout;
+
+        this.Auth = Auth;
     }
 
     $onInit() {
         const sr = ScrollReveal();
-
-        sr.reveal('.sr-button', {
-            delay: 500,
-            duration: 1000
-        });
 
         sr.reveal('.sr-contact', {
             duration: 600,
@@ -28,13 +30,22 @@ export class MainController {
         }, 300);
 
         sr.reveal('.sr-text', {
-            delay: 200,
-            duration: 500,
+            duration: 600,
             distance: '0px',
             easing: 'ease-in-out',
-            rotate: {z: 15},
-            scale: 1.3,
-            viewFactor: 1
+            rotate: {z: 8},
+            scale: 1.4,
+            viewFactor: .5
+        });
+
+        this.Auth.isLoggedIn().then(user => {
+           if (user) {
+               this.user = user;
+
+               this.$timeout(() => {
+                   this.$document.scrollToElementAnimated(angular.element(document.getElementById('search')), 50);
+               });
+           }
         });
     }
 

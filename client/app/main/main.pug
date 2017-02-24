@@ -12,9 +12,9 @@ header
             hr
             p
                 | Bak şimdi hocam, olayımız gayet basit aslında; birinden hoşlanıyorsun ama o bundan habersiz. Ya o da sana karşı boş değilse? Crushmate ile bunu öğrenme şansın bulunuyor.
-            a.btn.btn-primary.btn-xl.page-scroll(ng-href='{{vm.isLoggedIn() ? "#search" : "#connect"}}', du-smooth-scroll) İlgini çekti mi?
+            a.btn.btn-primary.btn-xl.page-scroll(ng-href='{{vm.user ? "#search" : "#connect"}}', offset='50', du-smooth-scroll) İlgini çekti mi?
 
-section#search.full-height.bg-primary(ng-show='vm.isLoggedIn()')
+section#search.full-height.bg-primary(ng-show='vm.user')
     .container
         .row
             .col-lg-8.col-lg-offset-2.text-center
@@ -24,7 +24,7 @@ section#search.full-height.bg-primary(ng-show='vm.isLoggedIn()')
                         button.search-icon(ng-click='vm.searchToggle($event)')
                             span
                     span.close(ng-click='vm.searchToggle($event);')
-section#connect.full-height.bg-primary(ng-show='!vm.isLoggedIn()')
+section#connect.full-height.bg-primary(ng-show='!vm.user')
     .container
         .row
             .col-lg-8.col-lg-offset-2.text-center
@@ -39,7 +39,7 @@ section#connect.full-height.bg-primary(ng-show='!vm.isLoggedIn()')
                         | Crushmate özel hayatına burnunu sokmaz. Bu hobi amaçlı bir proje. Biz de sadece aracıyız. Bilgilerini kimseyle paylaşmayacak, seni ve hayatının aşkını asla spam gibi saçmasapan şeylerle uğraştırmayacağız.
                     p.text-faded
                         | Bunların hepsi için izci sözü veriyoruz!
-                a.page-scroll.btn.btn-default.btn-xl.sr-button(href, ng-click='vm.login("facebook")') Hadi başlayalım!
+                    a.page-scroll.btn.btn-default.btn-xl(href, ng-click='vm.login("facebook")') Hadi başlayalım!
 section#contact
     .container
         .row
