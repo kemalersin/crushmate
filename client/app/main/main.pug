@@ -12,9 +12,19 @@ header
             hr
             p
                 | Bak şimdi hocam, olayımız gayet basit aslında; birinden hoşlanıyorsun ama o bundan habersiz. Ya o da sana karşı boş değilse? Crushmate ile bunu öğrenme şansın bulunuyor.
-            a.btn.btn-primary.btn-xl.page-scroll(href='#connect', du-smooth-scroll, offset='50') İlgini çekti mi?
+            a.btn.btn-primary.btn-xl.page-scroll(ng-href='{{vm.isLoggedIn() ? "#search" : "#connect"}}', du-smooth-scroll) İlgini çekti mi?
 
-section#connect.bg-primary
+section#search.full-height.bg-primary(ng-show='vm.isLoggedIn()')
+    .container
+        .row
+            .col-lg-8.col-lg-offset-2.text-center
+                .search-wrapper(ui-scrollpoint='500', ui-scrollpoint-class='active')
+                    .input-holder
+                        input.search-input(type='text', placeholder='Kime bakmıştın?')
+                        button.search-icon(ng-click='vm.searchToggle($event)')
+                            span
+                    span.close(ng-click='vm.searchToggle($event);')
+section#connect.full-height.bg-primary(ng-show='!vm.isLoggedIn()')
     .container
         .row
             .col-lg-8.col-lg-offset-2.text-center
@@ -29,7 +39,7 @@ section#connect.bg-primary
                         | Crushmate özel hayatına burnunu sokmaz. Bu hobi amaçlı bir proje. Biz de sadece aracıyız. Bilgilerini kimseyle paylaşmayacak, seni ve hayatının aşkını asla spam gibi saçmasapan şeylerle uğraştırmayacağız.
                     p.text-faded
                         | Bunların hepsi için izci sözü veriyoruz!
-                a.page-scroll.btn.btn-default.btn-xl.sr-button(href='#connect') Hadi başlayalım!
+                a.page-scroll.btn.btn-default.btn-xl.sr-button(href, ng-click='vm.login("facebook")') Hadi başlayalım!
 section#contact
     .container
         .row

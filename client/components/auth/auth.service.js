@@ -1,6 +1,8 @@
 'use strict';
 // @flow
 
+import _ from 'lodash';
+
 class _User {
     _id: string = '';
     name: string = '';

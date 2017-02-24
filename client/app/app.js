@@ -20,8 +20,14 @@ angular.module('crushMatchApp', [
         t <.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
     )
     .config(routeConfig)
-    .run(function () {
+    .run(() => {
         'ngInject';
+
+        if (window.location.hash == '#_=_') {
+            history.replaceState
+                ? history.replaceState(null, null, window.location.href.split('#')[0])
+                : window.location.hash = '';
+        }
     });
 
 angular.element(document)

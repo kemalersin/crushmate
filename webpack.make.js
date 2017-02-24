@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const fs = require('fs');
 const path = require('path');
@@ -99,6 +100,7 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.ts$/,
             loader: 'awesome-typescript-loader',
             query: {
+                'plugins': ['lodash'],
                 tsconfig: path.resolve(__dirname, 'tsconfig.client.json')
             },
             include: [
@@ -122,6 +124,12 @@ module.exports = function makeWebpackConfig(options) {
                 path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/*.scss'),
                 path.resolve(__dirname, 'client/app/app.scss')
             ]
+        }, {
+            test: /angular\.js$/,
+            loader: 'imports?$=jquery'
+        }, {
+            test: /jquery\.js$/,
+            loader: 'expose?$!expose?jQuery'
         }, {
             test: /scrollreveal\.js$/,
             loader: 'expose?ScrollReveal'
@@ -154,6 +162,7 @@ module.exports = function makeWebpackConfig(options) {
 
     config.plugins = [
         new ForkCheckerPlugin(),
+        new LodashModuleReplacementPlugin,
         new ExtractTextPlugin('[name].[hash].css', {
             disable: !BUILD || TEST
         })
