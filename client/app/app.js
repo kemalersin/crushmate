@@ -11,28 +11,28 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('crushMatchApp', [
-    'ngCookies', 'ngResource', 'ui.router', 'ui.scrollpoint',
-    'duScroll', 'angular-scroll-animate',
-    _Auth, main, constants, util
+  'ngCookies', 'ngResource', 'ui.router', 'ui.scrollpoint',
+  'ui.bootstrap', 'duScroll', 'angular-scroll-animate',
+  _Auth, main, constants, util
 ])
-    .value('duScrollDuration', 1500)
-    .value('duScrollEasing', t =>
-        t <.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
-    )
-    .config(routeConfig)
-    .run(() => {
-        'ngInject';
+  .value('duScrollDuration', 1500)
+  .value('duScrollEasing', t =>
+    t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+  )
+  .config(routeConfig)
+  .run(() => {
+    'ngInject';
 
-        if (window.location.hash == '#_=_') {
-            history.replaceState
-                ? history.replaceState(null, null, window.location.href.split('#')[0])
-                : window.location.hash = '';
-        }
-    });
+    if (window.location.hash == '#_=_') {
+      history.replaceState
+        ? history.replaceState(null, null, window.location.href.split('#')[0])
+        : window.location.hash = '';
+    }
+  });
 
 angular.element(document)
-    .ready(() => {
-        angular.bootstrap(document, ['crushMatchApp'], {
-            strictDi: true
-        });
+  .ready(() => {
+    angular.bootstrap(document, ['crushMatchApp'], {
+      strictDi: true
     });
+  });
