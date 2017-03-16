@@ -1,0 +1,22 @@
+.modal-header
+  button.close(type='button', ng-click='$dismiss()') &times;
+  h3.modal-title En Uygun Eşleşmeler
+.modal-body
+  .row
+    .col-md-12
+      .search-result(ng-scroll-bar)
+        .loader-container(ng-show='vm.loading')
+          .loader
+        .container.full-width.profiles(ng-show='vm.profiles')
+          .row
+            .col-md-3.text-center(ng-repeat='profile in vm.profiles')
+              img.img-circle(ng-src='https://graph.facebook.com/{{profile.id}}/picture?width=132&height=132',
+              width='132',
+              height='132')
+              p
+                small {{profile.name}}
+.modal-footer
+  button.btn.btn-primary.btn-lg(ng-disabled='vm.loading')
+    | Tamam
+  button.btn.btn-default.btn-lg(ng-click='$dismiss()')
+    | Vazgeç

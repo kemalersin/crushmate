@@ -4,12 +4,15 @@ export function UserResource($resource) {
   'ngInject';
 
   return $resource('/api/users/:id/:controller', {
-    id: '@_id'
+    id: 'me'
   }, {
     get: {
+      method: 'GET'
+    },
+    friends: {
       method: 'GET',
       params: {
-        id: 'me'
+        controller: 'friends'
       }
     }
   });

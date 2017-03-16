@@ -1,21 +1,30 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
+import SearchController from './search/search.controller';
 
 export class MainController {
+  $scope;
+  $rootScope;
   $window;
   $document;
   $timeout;
+  $uibModal;
 
   user;
+  query;
+
   Auth;
 
-  constructor(Auth, $window, $document, $timeout) {
+  constructor(Auth, $scope, $rootScope, $window, $document, $timeout, $uibModal) {
     'ngInject';
 
+    this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.$window = $window;
     this.$document = $document;
     this.$timeout = $timeout;
+    this.$uibModal = $uibModal;
 
     this.Auth = Auth;
   }
@@ -55,6 +64,24 @@ export class MainController {
     this.$window.location.href = `/auth/${provider}`;
   };
 
+  search() {
+    if (this.query) {
+      let modalScope = this.$rootScope.$new();
+
+      angular.extend(modalScope, {query: this.query});
+
+      this.$uibModal.open({
+        size: 'lg',
+        scope: modalScope,
+        backdrop: 'static',
+        windowClass: 'modal-default',
+        controllerAs: 'vm',
+        controller: 'SearchController',
+        template: require('./search/search.pug')
+      });
+    }
+  }
+
   searchToggle(event) {
     const el = angular.element(event.currentTarget);
 
@@ -65,7 +92,7 @@ export class MainController {
       container.addClass('active');
     }
     else if (container.hasClass('active') && el.closest('.input-holder').length == 0) {
-      input.val('');
+      this.query = null;
       container.removeClass('active');
     }
   }
@@ -73,6 +100,7 @@ export class MainController {
 
 export default angular.module('crushMatchApp.main', [uiRouter])
   .config(routing)
+  .controller('SearchController', SearchController)
   .component('main', {
     template: require('./main.pug'),
     controllerAs: 'vm',

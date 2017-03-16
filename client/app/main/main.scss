@@ -1,3 +1,7 @@
+header {
+  height: 100vh;
+}
+
 #homeHeading {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
 }
@@ -152,7 +156,7 @@
 
   .input-holder .search-icon span {
     width: 22px;
-    height: 22px;
+    height: 28px;
     display: inline-block;
     vertical-align: middle;
     position: relative;

@@ -1,0 +1,22 @@
+.modal-body {
+  .search-result {
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .profiles {
+    padding: 20px 0;
+
+    p {
+      small {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        display: inline-block;
+        padding: 10px 0;
+      }
+    }
+  }
+}

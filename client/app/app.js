@@ -13,6 +13,7 @@ import './app.scss';
 angular.module('crushMatchApp', [
   'ngCookies', 'ngResource', 'ui.router', 'ui.scrollpoint',
   'ui.bootstrap', 'duScroll', 'angular-scroll-animate',
+  'ngAnimate', 'ng-scroll-bar',
   _Auth, main, constants, util
 ])
   .value('duScrollDuration', 1500)

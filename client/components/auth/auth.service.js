@@ -85,6 +85,10 @@ export function AuthService($location, $cookies, $q, appConfig, Util, User) {
 
     getToken() {
       return $cookies.get('token');
+    },
+
+    getFriends(q) {
+      return User.friends({q}).$promise;
     }
   };
 

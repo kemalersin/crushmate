@@ -5,14 +5,14 @@ nav#mainNav.navbar.navbar-default.navbar-fixed-top(ui-scrollpoint='100', ui-scro
         img.pull-left(src='https://res.cloudinary.com/de2ljvtxn/image/upload/v1487844445/logo-32.png')
         | Crushmate Club
     a.picture(ui-sref='logout',
-      ng-show='vm.user.facebook',
-      uib-tooltip='{{vm.user.name}}',
-      tooltip-placement='left')
+    ng-show='vm.user.facebook',
+    uib-tooltip='{{vm.user.name}}',
+    tooltip-placement='left')
       span.overlay
         i.fa.fa-power-off
       img.img-circle(ng-src='https://graph.facebook.com/{{vm.user.facebook.id}}/picture?width=40&height=40',
-        width='36',
-        height='36')
+      width='36',
+      height='36')
 
 header
   .header-content
@@ -20,10 +20,11 @@ header
       h1#homeHeading Aşkı Uzakta Arama...
       hr
       p
-        | Bak şimdi hocam, olayımız gayet basit aslında; birinden hoşlanıyorsun ama o bundan habersiz. Ya o da sana karşı boş değilse? Crushmate ile bunu öğrenme şansın bulunuyor.
+        | Bak şimdi hocam, olayımız gayet basit aslında; birinden hoşlanıyorsun ama o bundan habersiz.
+        | Ya o da sana karşı boş değilse? Crushmate ile bunu öğrenme şansın bulunuyor.
       a.btn.btn-primary.btn-xl.page-scroll(ng-href='{{vm.user ? "#search" : "#connect"}}',
-        offset='50',
-        du-smooth-scroll) İlgini çekti mi?
+      offset='50',
+      du-smooth-scroll) İlgini çekti mi?
 
 section#search.full-height.bg-primary(ng-show='vm.user')
   .container
@@ -31,10 +32,11 @@ section#search.full-height.bg-primary(ng-show='vm.user')
       .col-lg-8.col-lg-offset-2.text-center
         .search-wrapper(ui-scrollpoint='450', ui-scrollpoint-class='active')
           .input-holder
-            input.search-input(type='text', placeholder='Kime baktın?')
-            button.search-icon(ng-click='vm.searchToggle($event)')
-              span
-          span.close(ng-click='vm.searchToggle($event);')
+            form(ng-submit='vm.search()')
+              input.search-input(type='text', placeholder='Kime baktın?', ng-model='vm.query')
+              button.search-icon(type='submit', ng-click='vm.searchToggle($event)')
+                span
+          span.close(ng-click='vm.searchToggle($event)')
 section#connect.full-height.bg-primary(ng-show='!vm.user')
   .container
     .row
@@ -43,11 +45,17 @@ section#connect.full-height.bg-primary(ng-show='!vm.user')
           h2.section-heading Bilmen gereken şeyler var...
           hr.light
           p.text-faded
-            | Yapman gereken, Facebook ile giriş yaptıktan sonra hoşlandığın kişiyi seçmek (tabii onun bundan haberi olmayacak). Sonra beklemeye başlayacaksın. Bu bekleyiş hemen bitebileceği gibi ömür boyu da sürebilir (işte gerçek bir platonik aşık!).
+            | Yapman gereken, Facebook ile giriş yaptıktan sonra hoşlandığın kişiyi seçmek (tabii onun bundan haberi olmayacak).
+            | Sonra beklemeye başlayacaksın. Bu bekleyiş hemen bitebileceği gibi ömür boyu da sürebilir (işte gerçek bir platonik aşık!).
           p.text-faded
-            | Durum o kadar umutsuz mu? Sanmıyoruz! Elini sallasan ellisi. Her an başka birini seçme şansına sahipsin. Hoşlandığın kişi de Crushmate kullanıp senden habersiz olarak seni seçerse sizi bir araya getireceğiz. Sonrasında ne olacağı size kalmış.
+            | Durum o kadar umutsuz mu? Sanmıyoruz! Elini sallasan ellisi.
+            | Her an başka birini seçme şansına sahipsin.
+            | Hoşlandığın kişi de Crushmate kullanıp senden habersiz olarak seni seçerse sizi bir araya getireceğiz.
+            | Sonrasında ne olacağı size kalmış.
           p.text-faded
-            | Crushmate özel hayatına burnunu sokmaz. Biz sadece aşıkları buluşturarak dünyayı güzelleştirmeye çalışıyoruz. Sen istemediğin sürece hiçbir şey paylaşmayacak, seni ve hayatının aşkını spam gibi saçmasapan şeylerle asla uğraştırmayacağız.
+            | Crushmate özel hayatına burnunu sokmaz.
+            | Biz sadece aşıkları buluşturarak dünyayı güzelleştirmeye çalışıyoruz.
+            | Sen istemediğin sürece hiçbir şey paylaşmayacak, seni ve hayatının aşkını spam gibi saçmasapan şeylerle asla uğraştırmayacağız.
           p.text-faded
             | Bunların hepsi için söz veriyoruz!
           a.page-scroll.btn.btn-default.btn-xl(href, ng-click='vm.login("facebook")') Hadi başlayalım!
@@ -58,7 +66,10 @@ section#contact
         h2.section-heading Arayı Açmayalım!
         hr.primary
         p
-          | Bildirimler ve tarayıcı eklentileri gibi teknolojileri kullanmıyoruz. Ekonomik kaygımız yok, olay tamamen psikolojik. Aşkınızın karşılık bulup bulmadığını görmek için buraya geri döneceğine eminiz. Bununla birlikte Crushmate hakkındaki gelişmeleri takip etmek için Facebook sayfamızı beğenebilirsin.
+          | Bildirimler ve tarayıcı eklentileri gibi teknolojileri kullanmıyoruz.
+          | Ekonomik kaygımız yok, olay tamamen psikolojik.
+          | Aşkınızın karşılık bulup bulmadığını görmek için buraya geri döneceğine eminiz.
+          | Bununla birlikte Crushmate hakkındaki gelişmeleri takip etmek için Facebook sayfamızı beğenebilirsin.
       .col-lg-4.col-lg-offset-2.text-center
         i.fa.fa-facebook-square.fa-3x.sr-contact
         p

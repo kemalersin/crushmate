@@ -30,6 +30,7 @@ module.exports = function makeWebpackConfig(options) {
       vendor: [
         'angular',
         'angular-aria',
+        'angular-animate',
         'angular-cookies',
         'angular-resource',
         'angular-ui-router',
@@ -37,7 +38,8 @@ module.exports = function makeWebpackConfig(options) {
         'angular-ui-scrollpoint',
         'angular-scroll',
         'angular-scroll-animate',
-        'scrollreveal'
+        'scrollreveal',
+        'ng-scroll-bar'
       ]
     };
   }
