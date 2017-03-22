@@ -1,6 +1,7 @@
 'use strict';
 
-import metaget from 'metaget';
+import _ from 'lodash';
+import request from 'request-promise';
 import User from './user.model';
 
 export function me(req, res, next) {
@@ -18,14 +19,27 @@ export function me(req, res, next) {
 }
 
 export function friends(req, res, next) {
-  const getId = meta => meta['al:ios:url']
-    .split('fb://profile/')
-    .pop();
-
-  metaget.fetch(
-    `https://www.facebook.com/kemalersinyilmaz`, {
-    headers: {'User-Agent': 'webscraper'}
-  }, (err, meta) =>
-    err ? next(err) : res.send(getId(meta))
-  );
+  request({
+    uri: `https://graph.facebook.com/${req.user.facebook.id}` +
+    `/taggable_friends?fields=id,name,picture.width(160)` +
+    `&limit=5000&access_token=${req.user.facebook.accessToken}`,
+    json: true
+  })
+    .then(body => res.json(
+      _.sortBy(
+        _.transform(body.data, (result, profile) => {
+          if (_.includes(
+            profile.name.toLowerCase(),
+            req.query.q.toLowerCase()
+          )) {
+            result.push({
+              id: profile.id,
+              name: profile.name,
+              picture: profile.picture.data.url
+            });
+          }
+        }, []), ['name']
+      )
+    ))
+    .catch(next);
 }

@@ -27,16 +27,14 @@ header
       du-smooth-scroll) İlgini çekti mi?
 
 section#search.full-height.bg-primary(ng-show='vm.user')
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.text-center
-        .search-wrapper(ui-scrollpoint='450', ui-scrollpoint-class='active')
-          .input-holder
-            form(ng-submit='vm.search()')
-              input.search-input(type='text', placeholder='Kime baktın?', ng-model='vm.query')
-              button.search-icon(type='submit', ng-click='vm.searchToggle($event)')
-                span
-          span.close(ng-click='vm.searchToggle($event)')
+  .search-wrapper(ui-scrollpoint='450', ui-scrollpoint-class='active')
+    .input-holder
+      form(ng-submit='vm.search()')
+        input.search-input(type='text', placeholder='Kime baktın?', ng-model='vm.query')
+        button.search-icon(type='submit', ng-click='vm.searchToggle($event)')
+          span
+    span.close(ng-click='vm.searchToggle($event)')
+
 section#connect.full-height.bg-primary(ng-show='!vm.user')
   .container
     .row

@@ -11,6 +11,7 @@ export function UserResource($resource) {
     },
     friends: {
       method: 'GET',
+      isArray: true,
       params: {
         controller: 'friends'
       }

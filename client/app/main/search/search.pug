@@ -7,14 +7,15 @@
       .search-result(ng-scroll-bar)
         .loader-container(ng-show='vm.loading')
           .loader
-        .container.full-width.profiles(ng-show='vm.profiles')
-          .row
-            .col-md-3.text-center(ng-repeat='profile in vm.profiles')
-              img.img-circle(ng-src='https://graph.facebook.com/{{profile.id}}/picture?width=132&height=132',
-              width='132',
-              height='132')
-              p
-                small {{profile.name}}
+        .container.full-width
+          .profiles(ng-show='vm.profiles')
+            .row
+              .col-md-3.text-center(ng-repeat='profile in vm.profiles')
+                figure.img-thumbnail
+                  i.fa.fa-heart
+                  img(ng-src='{{profile.picture}}')
+                p
+                  small {{profile.name}}
 .modal-footer
   button.btn.btn-primary.btn-lg(ng-disabled='vm.loading')
     | Tamam
